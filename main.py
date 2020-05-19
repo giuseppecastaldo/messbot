@@ -24,6 +24,7 @@ def fb_receive_message():
         for message in entry['messaging']:
             if message.get('message'):
                 print("{sender[id]} says {message[text]}".format(**message))
+                sys.stdout.flush()
     return "Hi"
 
 if __name__ == '__main__':
