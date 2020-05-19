@@ -36,7 +36,21 @@ def webhook():
 def sendMessage(token, sender_id, text):
     json_data = {
         "recipient": {"id": sender_id},
-        "message": {"text": text }
+        "message": {
+            "text": text 
+            "attachment": {
+                "type":"template",
+                "payload": {
+                    "template_type":"button", 
+                    "text": text,
+                    "buttons":[{
+                        "type":"web_url",
+                        "url":"https://www.messenger.com",
+                        "title":"Visit Messenger"
+                    }
+                }
+            }
+        }
     }
     params = {
         "access_token": token
