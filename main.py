@@ -45,7 +45,7 @@ def sendMessage(token, sender_id, text):
     r = requests.post('https://graph.facebook.com/v7.0/me/messages', json=json_data, params=params)
     
     if r.status_code != requests.codes.ok:
-       print (r.text)
+       print(r.text)
     
 def log(message):
     print(message)
