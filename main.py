@@ -8,7 +8,7 @@ from flask import Flask, request
 from pymessager.message import Bot
 
 app = Flask(__name__)
-bot = Bot('EAAD4hzOfxVcBAIdn3KZCjGA4olFf2Ytw67QZA0FeCtj3javQrn8UGwUDO7M6xZAx3ZBy20vk4wujhH7y7uPHQgKXCMSsu5q1pvj01WodzqWgXgAdjLxhITlCyc03G8gYauZCZCkZBIU36BkptRHi9L9ApHgKK3kdp3OAUGtSpZCGtgZDZD')
+client = Messager('EAAD4hzOfxVcBAIdn3KZCjGA4olFf2Ytw67QZA0FeCtj3javQrn8UGwUDO7M6xZAx3ZBy20vk4wujhH7y7uPHQgKXCMSsu5q1pvj01WodzqWgXgAdjLxhITlCyc03G8gYauZCZCkZBIU36BkptRHi9L9ApHgKK3kdp3OAUGtSpZCGtgZDZD')
 
 @app.route('/', methods=["GET"])
 def fb_webhook():
@@ -29,7 +29,7 @@ def fb_receive_message():
                 print("{sender[id]} says {message[text]}".format(**message))
                 sys.stdout.flush()
                 
-                bot.send_text_message(sender_id, 'bot in funzione')
+                client.send_text(recipient_id, "Hello, I'm bot.")
     return "Hi"
 
 if __name__ == '__main__':
