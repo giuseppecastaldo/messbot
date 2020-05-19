@@ -12,12 +12,10 @@ client = Messager('EAAD4hzOfxVcBAKVSvIbuqWBz7jmSv5ZARVsaUwLcXZB7ggB7eT7kejoF8OZC
 
 @app.route('/', methods=["GET"])
 def fb_webhook():
-    if request.args.get("hub.mode") == "subscribe" and request.args.get("hub.challenge"):
-        if not request.args.get("hub.verify_token") == os.environ["italia10"]:
-            return "Verification token mismatch", 403
-        return request.args["hub.challenge"], 200
-
-    return "Hello world", 200
+    verification_code = 'hello'
+    verify_token = request.args.get('hub.verify_token')
+    if verification_code == verify_token:
+        return request.args.get('hub.challenge')
 
 @app.route('/', methods=["POST"])
 def fb_receive_message():
