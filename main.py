@@ -30,8 +30,10 @@ def webhook():
                         messaging_text = messaging_event['message']['text'] 
                         sendMessage(PAT,sender_id,messaging_text)
                 if messaging_event.get('postback'):
-                    log(messaging_event['postback']['title'])
-                    log(messaging_event['postback']['payload'])
+                    if messaging_event['postback']['payload'] == 'ciao':
+                        sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
+                    else:
+                        sendMessage(PAT,sender_id,'Hai premuto il pulsante 2')
             
     return ("ok", 200)
 
