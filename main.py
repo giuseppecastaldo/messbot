@@ -28,7 +28,7 @@ def webhook():
                 if messaging_event.get('message'):
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text'] 
-                        sendMessage(PAT,sender_id,messaging_text)
+                        sendMessageWithQuickReply(PAT,sender_id,messaging_text)
                 if messaging_event.get('postback'):
                     if messaging_event['postback']['payload'] == 'ciao':
                         sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
@@ -61,6 +61,37 @@ def sendMessage(token, sender_id, text):
                         }]
                 }
             }
+        }
+    }
+    params = {
+        "access_token": token
+    }
+
+    r = requests.post('https://graph.facebook.com/v7.0/me/messages', json=json_data, params=params)
+
+    if r.status_code != requests.codes.ok:
+        print(r.text)
+        
+ def sendMessageWithQuickReply(token, sender_id, text):
+    json_data = {
+        "recipient": {
+            "id": sender_id
+        },
+        "messaging_type": "RESPONSE",
+        "message": {
+            "text": text,
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Scelta 1",
+                    "payload": "1",
+                }, 
+                {
+                    "content_type": "text",
+                    "title": "Scelta 2",
+                    "payload": "2",
+                }
+            ]
         }
     }
     params = {
