@@ -8,7 +8,7 @@ from flask import Flask, request
 from pymessager.message import Messager
 
 app = Flask(__name__)
-client = Messager('EAAD4hzOfxVcBAKVSvIbuqWBz7jmSv5ZARVsaUwLcXZB7ggB7eT7kejoF8OZC9feKDuencuGa9YZBZCAfidT7PN8ztXwElhQYnwiNgI9JHy6g51rXPgTvLfsLtDFh4cbrbxpuZC9SA0iGQO9DQ8iQL3O3kjD3vnm0NQquJ0ZCXuZAGgZDZD')
+client = Messager('EAAD4hzOfxVcBAHBTOX7RQnxFvSSdH4nQP5D6JJ9HXaciBZBMgur8oEdxPQ1lZBGGrEgogxXIARslRDPVAMD0bsnMdu6XnEPUfYxMjE0LH0LExhlZCNd3gbfZCZA2nwuex6Uf2WsvU1Dys5hqlmaGeJqxnKMZBSFVkZBZBI331cIuLgZDZD')
 
 @app.route('/', methods=["GET"])
 def fb_webhook():
