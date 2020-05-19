@@ -37,17 +37,17 @@ def sendMessage(token, sender_id, text):
     json_data = {
         "recipient": {"id": sender_id},
         "message": {
-            "text": text 
             "attachment": {
-                "type":"template",
+                "type": "template",
                 "payload": {
-                    "template_type":"button", 
+                    "template_type": "button",
                     "text": text,
-                    "buttons":[{
-                        "type":"web_url",
-                        "url":"https://www.messenger.com",
-                        "title":"Visit Messenger"
-                    }
+                    "buttons": [
+                        {
+                            "type": "web_url",
+                            "url": "https://www.messenger.com",
+                            "title": "Visit Messenger"
+                        }
                 }
             }
         }
@@ -55,11 +55,11 @@ def sendMessage(token, sender_id, text):
     params = {
         "access_token": token
     }
- 
+
     r = requests.post('https://graph.facebook.com/v7.0/me/messages', json=json_data, params=params)
-    
+
     if r.status_code != requests.codes.ok:
-       print(r.text)
+        print(r.text)
     
 def log(message):
     print(message)
