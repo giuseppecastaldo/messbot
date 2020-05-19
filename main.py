@@ -26,10 +26,7 @@ def fb_receive_message():
             recipient_id = message['recipient']['id']
             
             if message.get('message'):
-                print("{sender[id]} says {message[text]}".format(**message))
-                sys.stdout.flush()
-                
-                client.send_text(recipient_id, "Hello, I'm bot.")
+                client.send_text(sender_id, "Hello, I'm bot.")
     return "Hi"
 
 if __name__ == '__main__':
