@@ -17,14 +17,14 @@ def fb_webhook():
 
 @app.route('/', methods=["POST"])
 def fb_receive_message():
-    message_entries = json.loads(request.data.decode('utf8'))['entry']
-    for entry in message_entries:
-        for message in entry['messaging']:
-            sender_id = message['sender']['id']
-            recipient_id = message['recipient']['id']
-           
-            send_message(recipient_id, "Hello, I'm bot.")
-                
+    for messaging_event in entry["messaging"]:
+        if messaging_event.get("message"):  # someone sent us a message
+            sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+            recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+            message_text = messaging_event["message"]["text"]  # the message's text
+
+            send_message(sender_id, "roger that!")
+                    
     return "Hi"
 
 def send_message(recipient_id, message_text):
@@ -42,7 +42,7 @@ def send_message(recipient_id, message_text):
             "text": message_text
         }
     })
-    r = requests.post("https://graph.facebook.com/v2.9/me/messages", params=params, headers=headers, data=data)
+    r = requests.post("https://graph.facebook.com/v7.0/me/messages", params=params, headers=headers, data=data)
 
 if __name__ == '__main__':
     app.run()
