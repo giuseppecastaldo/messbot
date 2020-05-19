@@ -22,8 +22,8 @@ def fb_receive_message():
     message_entries = json.loads(request.data.decode('utf8'))['entry']
     for entry in message_entries:
         for message in entry['messaging']:
-            sender_id = messaging_event['sender']['id']
-            recipient_id = messaging_event['recipient']['id']
+            sender_id = message['sender']['id']
+            recipient_id = message['recipient']['id']
             
             if message.get('message'):
                 print("{sender[id]} says {message[text]}".format(**message))
