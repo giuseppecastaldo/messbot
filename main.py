@@ -46,9 +46,9 @@ def sendMessage(token, sender_id, text):
                     "text": text,
                     "buttons": [
                         {
-                            "type": "web_url",
-                            "url": "https://www.messenger.com",
-                            "title": "Visit Messenger"
+                            "type":"postback",
+                            "title":"Bottone di esempio",
+                            "payload":"ciao"
                         }]
                 }
             }
