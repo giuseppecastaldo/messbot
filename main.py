@@ -17,7 +17,7 @@ def fb_webhook():
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
 
-    return "Hello world!", 200
+    return "Hello world", 200
 
 @app.route('/', methods=["POST"])
 def fb_receive_message():
