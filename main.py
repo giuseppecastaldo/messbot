@@ -29,5 +29,4 @@ def fb_receive_message():
     return "Hi"
 
 if __name__ == '__main__':
-    context = ('cert.pem', 'key.pem')
-    app.run(host='0.0.0.0', debug=True, port=80, ssl_context=context)
+    app.run(host='0.0.0.0')
