@@ -72,7 +72,8 @@ def sendMessage(token, sender_id, text):
     if r.status_code != requests.codes.ok:
         print(r.text)
         
- def sendMessageWithQuickReply(token, sender_id, text):
+ 
+def sendMessageWithQuickReply(token, sender_id, text):
     json_data = {
         "recipient": {
             "id": sender_id
