@@ -5,7 +5,7 @@ from datetime import datetime
 
 import requests
 from flask import Flask, request
-from pymessager.message import Bot
+from pymessager.message import Messager
 
 app = Flask(__name__)
 client = Messager('EAAD4hzOfxVcBAIdn3KZCjGA4olFf2Ytw67QZA0FeCtj3javQrn8UGwUDO7M6xZAx3ZBy20vk4wujhH7y7uPHQgKXCMSsu5q1pvj01WodzqWgXgAdjLxhITlCyc03G8gYauZCZCkZBIU36BkptRHi9L9ApHgKK3kdp3OAUGtSpZCGtgZDZD')
