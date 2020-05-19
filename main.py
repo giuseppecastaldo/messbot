@@ -47,8 +47,13 @@ def sendMessage(token, sender_id, text):
                     "buttons": [
                         {
                             "type":"postback",
-                            "title":"Bottone di esempio",
+                            "title":"Bottone di esempio 1",
                             "payload":"ciao"
+                        },
+                        {
+                            "type":"postback",
+                            "title":"Bottone di esempio 2",
+                            "payload":"ciao2"
                         }]
                 }
             }
