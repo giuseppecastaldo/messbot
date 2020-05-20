@@ -38,7 +38,6 @@ def webhook():
                         buttons.append(CallButton('Chiamami', '+393278994952'))
                         media_templates = []
                         media_templates.append(MediaTemplate('video', 'https://youtu.be/kO5WPKT0690', buttons))
-                        media_templates.append(MediaTemplate('video', 'https://youtu.be/kO5WPKT0690', buttons))
                         media_templates.append(MediaTemplate('foto', 'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg', buttons))
                         bot.send_media_templates(sender_id, media_templates)
                 #if messaging_event.get('postback'):
