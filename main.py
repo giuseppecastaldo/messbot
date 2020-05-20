@@ -36,7 +36,6 @@ def webhook():
                         messaging_text = messaging_event['message']['text']
                         buttons = []
                         buttons.append(PostbackButton('Prova', 'ok'))
-                        buttons.append(CallButton('Chiamami', '+393278994952'))
                         list_elements = []
                         list_elements.append(ListElement('titolo', 'sottotitolo', 'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg'))
                         list_elements.append(ListElement('titolo', 'sottotitolo',

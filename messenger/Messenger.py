@@ -119,7 +119,7 @@ class Messenger:
         if r.status_code != requests.codes.ok:
             print(r.text)
 
-    def send_list_model(self, sender_id, list_elements, buttons=None, sharable=False):
+    def send_list_model(self, sender_id, list_elements, buttons=None, sharable=False, top_element_style='compact'):
         json_data = {
             "recipient": {
                 "id": sender_id
@@ -129,7 +129,7 @@ class Messenger:
                     "type": "template",
                     "payload": {
                         "template_type": "list",
-                        "top_element_style": "compact",
+                        "top_element_style": top_element_style,
                         "elements": json.dumps([list_element.__dict__ for list_element in list_elements]),
                         "buttons": json.dumps([button.__dict__ for button in buttons]),
                         "sharable": sharable
