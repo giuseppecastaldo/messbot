@@ -29,7 +29,7 @@ def webhook():
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
                         quick_replies = []
-                        quick_replies.append(QuickReply('text', 'risposta1', 'ok'))
+                        quick_replies.append(QuickReply('risposta1', 'ok'))
                         bot.send_message_with_quick_reply(sender_id, 'prova risposta rapida', quick_replies)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
