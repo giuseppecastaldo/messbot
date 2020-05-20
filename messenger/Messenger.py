@@ -148,7 +148,6 @@ class Messenger:
 
     def set_persistent_menu(self, sender_id):
         json_data = {
-            "psid": sender_id,
             "recipient": {
                 "id": sender_id
             },
@@ -185,4 +184,20 @@ class Messenger:
 
         if r.status_code != requests.codes.ok:
             print(r.text)
+
+    def set_get_started_button(self):
+        json_data = {
+            "get_started": {
+                "payload": "<postback_payload>"
+            }
+        }
+        params = {
+            "access_token": self.access_token
+        }
+
+        r = requests.post(BASE_URL, json=json_data, params=params)
+
+        if r.status_code != requests.codes.ok:
+            print(r.text)
+
 
