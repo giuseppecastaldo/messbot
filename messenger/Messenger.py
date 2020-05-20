@@ -105,7 +105,7 @@ class Messenger:
                     "type": "template",
                     "payload": {
                         "template_type": "media",
-                        "elements": json.dumps(media_element)
+                        "elements": json.dumps(media_element.__dict__)
                     }
                 }
             }
