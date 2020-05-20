@@ -4,6 +4,7 @@ from flask import Flask, request
 from messenger.Messenger import Messenger
 from messenger.types.CallButton import CallButton
 from messenger.types.GenericModel import GenericModel
+from messenger.types.ListElement import ListElement
 from messenger.types.PostbackButton import PostbackButton
 from messenger.types.QuickReply import QuickReply
 from messenger.types.UrlButton import UrlButton
@@ -36,9 +37,11 @@ def webhook():
                         buttons = []
                         buttons.append(PostbackButton('Prova', 'ok'))
                         buttons.append(CallButton('Chiamami', '+393278994952'))
-                        media_templates = []
-                        media_templates.append(MediaTemplate('video', 'https://www.facebook.com/ChiamarsiBomber/videos/645384766016339/', buttons))
-                        bot.send_media_templates(sender_id, media_templates)
+                        list_elements = []
+                        list_elements.append(ListElement('titolo', 'sottotitolo', 'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg'))
+                        list_elements.append(ListElement('titolo', 'sottotitolo',
+                                                         'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg'))
+                        bot.send_list_model(sender_id, list_elements, buttons)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
