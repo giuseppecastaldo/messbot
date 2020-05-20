@@ -1,7 +1,6 @@
 class QuickReply:
 
-    def __init__(self, content_type='text', title, payload):
-
-        self.content_type = content_type
+    def __init__(self, title, payload):
+        self.content_type = 'text'
         self.title = title
         self.payload = payload
