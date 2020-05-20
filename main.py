@@ -37,7 +37,7 @@ def webhook():
                         buttons.append(PostbackButton('Prova', 'ok'))
                         buttons.append(CallButton('Chiamami', '+393278994952'))
                         media_templates = []
-                        media_templates.append(MediaTemplate('video', 'https://youtu.be/kO5WPKT0690', buttons))
+                        media_templates.append(MediaTemplate('video', 'https://www.facebook.com/ChiamarsiBomber/videos/645384766016339/', buttons))
                         bot.send_media_templates(sender_id, media_templates)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
