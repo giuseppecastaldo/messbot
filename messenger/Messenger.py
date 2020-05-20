@@ -95,7 +95,7 @@ class Messenger:
         if r.status_code != requests.codes.ok:
             print(r.text)
 
-    def send_media_template(self, sender_id, media_element):
+    def send_media_templates(self, sender_id, media_elements):
         json_data = {
             "recipient": {
                 "id": sender_id
@@ -105,7 +105,7 @@ class Messenger:
                     "type": "template",
                     "payload": {
                         "template_type": "media",
-                        "elements": json.dumps(media_element.__dict__)
+                        "elements": json.dumps([media_element.__dict__ for media_element in media_elements])
                     }
                 }
             }
