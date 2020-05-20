@@ -146,7 +146,7 @@ class Messenger:
         if r.status_code != requests.codes.ok:
             print(r.text)
 
-    def set_persistent_menu(self, sender_id):
+    def set_persistent_menu(self):
         json_data = {
             "persistent_menu": [
                 {
@@ -177,7 +177,7 @@ class Messenger:
             "access_token": self.access_token
         }
 
-        r = requests.post('https://graph.facebook.com/v7.0/me/', json=json_data, params=params)
+        r = requests.post('https://graph.facebook.com/v7.0/me/messenger_profile', json=json_data, params=params)
 
         if r.status_code != requests.codes.ok:
             print(r.text)
@@ -192,7 +192,7 @@ class Messenger:
             "access_token": self.access_token
         }
 
-        r = requests.post('https://graph.facebook.com/v7.0/me/', json=json_data, params=params)
+        r = requests.post('https://graph.facebook.com/v7.0/me/messenger_profile', json=json_data, params=params)
 
         if r.status_code != requests.codes.ok:
             print(r.text)
