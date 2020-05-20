@@ -2,6 +2,7 @@ import sys
 import requests
 from flask import Flask, request
 from messenger.Messenger import Messenger
+from messenger.types.CallButton import CallButton
 from messenger.types.PostbackButton import PostbackButton
 from messenger.types.QuickReply import QuickReply
 from messenger.types.UrlButton import UrlButton
@@ -33,6 +34,7 @@ def webhook():
                         buttons = []
                         buttons.append(PostbackButton('prova bottone normale', 'ok'))
                         buttons.append(UrlButton('prova link', 'https://www.google.it/'))
+                        buttons.append(CallButton('chiamami', '3278994952'))
                         bot.send_message_with_buttons(sender_id, 'prova due tipi di bottoni', buttons)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
