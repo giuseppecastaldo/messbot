@@ -29,11 +29,16 @@ def webhook():
                 if messaging_event.get('message'):
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
-                        buttons = []
-                        buttons.append(PostbackButton('risposta1', 'ok1'))
-                        buttons.append(PostbackButton('risposta2', 'ok2'))
-                        buttons.append(PostbackButton('risposta3', 'ok3'))
-                        bot.send_message_with_postback_buttons(sender_id, 'prova bottoni', buttons)
+                        quick_replies = []
+                        quick_replies.append(QuickReply('risposta1', 'ok1'))
+                        quick_replies.append(QuickReply('risposta2', 'ok2'))
+                        quick_replies.append(QuickReply('risposta3', 'ok3'))
+                        quick_replies.append(QuickReply('risposta4', 'ok4'))
+                        quick_replies.append(QuickReply('risposta5', 'ok5'))
+                        quick_replies.append(QuickReply('risposta6', 'ok6'))
+                        quick_replies.append(QuickReply('risposta7', 'ok7'))
+                        quick_replies.append(QuickReply('risposta8', 'ok8'))
+                        bot.send_message_with_quick_replies(sender_id, 'prova bottoni', quick_replies)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
