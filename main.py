@@ -34,7 +34,7 @@ def webhook():
                 if messaging_event.get('message'):
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
-                        bot.send_message(sender_id, sender_id)
+                        bot.send_message(sender_id, 'Ciao')
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
@@ -48,7 +48,4 @@ def log(message):
     sys.stdout.flush()
     
 if __name__ == '__main__':
-    buttons = []
-    buttons.append(PostbackButton('Bottone di prova', 'OK'))
-    bot.set_persistent_menu(buttons)
     app.run()
