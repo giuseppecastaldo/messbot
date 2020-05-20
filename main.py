@@ -34,8 +34,7 @@ def webhook():
                 if messaging_event.get('message'):
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
-                        bot.set_get_started_button()
-                        bot.set_persistent_menu()
+                        bot.send_message(sender_id, sender_id)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
