@@ -32,7 +32,7 @@ class Messenger:
             "messaging_type": "RESPONSE",
             "message": {
                 "text": text,
-                "quick_replies": json.dumps(quick_replies)
+                "quick_replies": json.dumps([quick_reply.__dict__ for quick_reply in quick_replies])
             }
         }
         params = {
