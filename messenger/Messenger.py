@@ -70,3 +70,28 @@ class Messenger:
 
         if r.status_code != requests.codes.ok:
             print(r.text)
+
+    def send_generic_models(self, sender_id, generic_models):
+        json_data = {
+            "recipient": {
+                "id": sender_id
+            },
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": json.dumps([generic_model.__dict__ for generic_model in generic_models])
+                    }
+                }
+            }
+        }
+        params = {
+            "access_token": self.access_token
+        }
+
+        r = requests.post(BASE_URL, json=json_data, params=params)
+
+        if r.status_code != requests.codes.ok:
+            print(r.text)
+

@@ -3,6 +3,7 @@ import requests
 from flask import Flask, request
 from messenger.Messenger import Messenger
 from messenger.types.CallButton import CallButton
+from messenger.types.GenericModel import GenericModel
 from messenger.types.PostbackButton import PostbackButton
 from messenger.types.QuickReply import QuickReply
 from messenger.types.UrlButton import UrlButton
@@ -32,16 +33,29 @@ def webhook():
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
                         buttons = []
-                        buttons.append(PostbackButton('prova bottone normale', 'ok'))
-                        buttons.append(UrlButton('prova link', 'https://www.google.it/'))
-                        buttons.append(CallButton('chiamami', '3278994952'))
-                        bot.send_message_with_buttons(sender_id, 'prova due tipi di bottoni', buttons)
+                        buttons.append(PostbackButton('Prova', 'ok'))
+                        buttons.append(CallButton('Chiamami', '+393278994952'))
+                        generic_models = []
+                        generic_models.append(GenericModel('Titolo', 'Sottotitolo', 'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg', buttons))
+                        generic_models.append(GenericModel('Titolo', 'Sottotitolo',
+                                                           'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg',
+                                                           buttons))
+                        generic_models.append(GenericModel('Titolo', 'Sottotitolo',
+                                                           'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg',
+                                                           buttons))
+                        generic_models.append(GenericModel('Titolo', 'Sottotitolo',
+                                                           'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg',
+                                                           buttons))
+                        generic_models.append(GenericModel('Titolo', 'Sottotitolo',
+                                                           'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg',
+                                                           buttons))
+                        bot.send_generic_models(sender_id, generic_models)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
                     #else:
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 2')
-            
+
     return ("ok", 200)
     
 def log(message):
