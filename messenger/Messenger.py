@@ -188,7 +188,7 @@ class Messenger:
     def set_get_started_button(self):
         json_data = {
             "get_started": {
-                "payload": "<postback_payload>"
+                "payload": "START_BOT"
             }
         }
         params = {

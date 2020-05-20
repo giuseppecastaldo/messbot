@@ -23,7 +23,6 @@ def fb_webhook():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    bot.set_get_started_button()
     req = request.get_json()
     log(req) 
     if req['object'] == ('page'):
@@ -49,4 +48,5 @@ def log(message):
     sys.stdout.flush()
     
 if __name__ == '__main__':
+    bot.set_get_started_button()
     app.run()
