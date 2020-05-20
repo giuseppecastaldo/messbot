@@ -48,4 +48,7 @@ def log(message):
     sys.stdout.flush()
     
 if __name__ == '__main__':
+    buttons = []
+    buttons.append(PostbackButton('Bottone di prova', 'OK'))
+    bot.set_persistent_menu(buttons)
     app.run()
