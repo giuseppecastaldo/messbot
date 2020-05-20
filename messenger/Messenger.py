@@ -149,6 +149,9 @@ class Messenger:
     def set_persistent_menu(self, sender_id):
         json_data = {
             "psid": sender_id,
+            "recipient": {
+                "id": sender_id
+            },
             "persistent_menu": [
                 {
                     "locale": "default",
