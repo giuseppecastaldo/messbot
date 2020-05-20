@@ -146,3 +146,40 @@ class Messenger:
         if r.status_code != requests.codes.ok:
             print(r.text)
 
+    def set_persistent_menu(self, sender_id):
+        json_data = {
+            "psid": sender_id,
+            "persistent_menu": [
+                {
+                    "locale": "default",
+                    "composer_input_disabled": 'false',
+                    "call_to_actions": [
+                        {
+                            "type": "postback",
+                            "title": "Talk to an agent",
+                            "payload": "CARE_HELP"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Outfit suggestions",
+                            "payload": "CURATION"
+                        },
+                        {
+                            "type": "web_url",
+                            "title": "Shop now",
+                            "url": "https://www.originalcoastclothing.com/",
+                            "webview_height_ratio": "full"
+                        }
+                    ]
+                }
+            ]
+        }
+        params = {
+            "access_token": self.access_token
+        }
+
+        r = requests.post(BASE_URL, json=json_data, params=params)
+
+        if r.status_code != requests.codes.ok:
+            print(r.text)
+
