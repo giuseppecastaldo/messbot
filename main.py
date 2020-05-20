@@ -34,13 +34,7 @@ def webhook():
                 if messaging_event.get('message'):
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
-                        buttons = []
-                        buttons.append(PostbackButton('Prova', 'ok'))
-                        list_elements = []
-                        list_elements.append(ListElement('titolo', 'sottotitolo', 'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg'))
-                        list_elements.append(ListElement('titolo', 'sottotitolo',
-                                                         'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg'))
-                        bot.send_list_model(sender_id, list_elements, buttons)
+                        bot.send_message(sender_id, messaging_text)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
