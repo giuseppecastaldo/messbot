@@ -141,7 +141,7 @@ class Messenger:
             "access_token": self.access_token
         }
 
-        r = requests.post(BASE_URL, json=json_data, params=params)
+        r = requests.post('https://graph.facebook.com/v2.6/me/messages', json=json_data, params=params)
 
         if r.status_code != requests.codes.ok:
             print(r.text)
