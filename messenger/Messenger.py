@@ -95,3 +95,26 @@ class Messenger:
         if r.status_code != requests.codes.ok:
             print(r.text)
 
+    def send_media_templates(self, sender_id, media_elements):
+        json_data = {
+            "recipient": {
+                "id": sender_id
+            },
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "media",
+                        "elements": json.dumps([media_element.__dict__ for media_element in media_elements])
+                    }
+                }
+            }
+        }
+        params = {
+            "access_token": self.access_token
+        }
+
+        r = requests.post(BASE_URL, json=json_data, params=params)
+
+        if r.status_code != requests.codes.ok:
+            print(r.text)

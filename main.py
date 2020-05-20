@@ -7,6 +7,7 @@ from messenger.types.GenericModel import GenericModel
 from messenger.types.PostbackButton import PostbackButton
 from messenger.types.QuickReply import QuickReply
 from messenger.types.UrlButton import UrlButton
+from messenger.types.MediaTemplate import MediaTemplate
 
 app = Flask(__name__)
 PAT = 'EAAD4hzOfxVcBAIdn3KZCjGA4olFf2Ytw67QZA0FeCtj3javQrn8UGwUDO7M6xZAx3ZBy20vk4wujhH7y7uPHQgKXCMSsu5q1pvj01WodzqWgXgAdjLxhITlCyc03G8gYauZCZCkZBIU36BkptRHi9L9ApHgKK3kdp3OAUGtSpZCGtgZDZD'
@@ -35,21 +36,11 @@ def webhook():
                         buttons = []
                         buttons.append(PostbackButton('Prova', 'ok'))
                         buttons.append(CallButton('Chiamami', '+393278994952'))
-                        generic_models = []
-                        generic_models.append(GenericModel('Titolo', 'Sottotitolo', 'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg', buttons))
-                        generic_models.append(GenericModel('Titolo', 'Sottotitolo',
-                                                           'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg',
-                                                           buttons))
-                        generic_models.append(GenericModel('Titolo', 'Sottotitolo',
-                                                           'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg',
-                                                           buttons))
-                        generic_models.append(GenericModel('Titolo', 'Sottotitolo',
-                                                           'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg',
-                                                           buttons))
-                        generic_models.append(GenericModel('Titolo', 'Sottotitolo',
-                                                           'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg',
-                                                           buttons))
-                        bot.send_generic_models(sender_id, generic_models)
+                        media_templates = []
+                        media_templates.append(MediaTemplate('video', 'https://youtu.be/kO5WPKT0690', buttons))
+                        media_templates.append(MediaTemplate('video', 'https://youtu.be/kO5WPKT0690', buttons))
+                        media_templates.append(MediaTemplate('foto', 'https://www.panorama.schenna.com/contents/images/foto/slider/infinitypool.jpg', buttons))
+                        bot.send_media_templates(sender_id, media_templates)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
