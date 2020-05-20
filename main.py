@@ -33,7 +33,6 @@ def webhook():
                         buttons.append(PostbackButton('risposta1', 'ok1'))
                         buttons.append(PostbackButton('risposta2', 'ok2'))
                         buttons.append(PostbackButton('risposta3', 'ok3'))
-                        buttons.append(PostbackButton('risposta4', 'ok4'))
                         bot.send_message_with_postback_buttons(sender_id, 'prova bottoni', buttons)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
