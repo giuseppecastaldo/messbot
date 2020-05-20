@@ -46,7 +46,7 @@ class Messenger:
         if r.status_code != requests.codes.ok:
             print(r.text)
 
-    def send_message_with_postback_buttons(self, sender_id, message, buttons):
+    def send_message_with_buttons(self, sender_id, message, buttons):
         json_data = {
             "recipient": {
                 "id": sender_id

@@ -4,6 +4,7 @@ from flask import Flask, request
 from messenger.Messenger import Messenger
 from messenger.types.PostbackButton import PostbackButton
 from messenger.types.QuickReply import QuickReply
+from messenger.types.UrlButton import UrlButton
 
 app = Flask(__name__)
 PAT = 'EAAD4hzOfxVcBAIdn3KZCjGA4olFf2Ytw67QZA0FeCtj3javQrn8UGwUDO7M6xZAx3ZBy20vk4wujhH7y7uPHQgKXCMSsu5q1pvj01WodzqWgXgAdjLxhITlCyc03G8gYauZCZCkZBIU36BkptRHi9L9ApHgKK3kdp3OAUGtSpZCGtgZDZD'
@@ -29,16 +30,10 @@ def webhook():
                 if messaging_event.get('message'):
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
-                        quick_replies = []
-                        quick_replies.append(QuickReply('risposta1', 'ok1'))
-                        quick_replies.append(QuickReply('risposta2', 'ok2'))
-                        quick_replies.append(QuickReply('risposta3', 'ok3'))
-                        quick_replies.append(QuickReply('risposta4', 'ok4'))
-                        quick_replies.append(QuickReply('risposta5', 'ok5'))
-                        quick_replies.append(QuickReply('risposta6', 'ok6'))
-                        quick_replies.append(QuickReply('risposta7', 'ok7'))
-                        quick_replies.append(QuickReply('risposta8', 'ok8'))
-                        bot.send_message_with_quick_replies(sender_id, 'prova bottoni', quick_replies)
+                        buttons = []
+                        buttons.append(PostbackButton('prova bottone normale', 'ok'))
+                        buttons.append(UrlButton('prova link', 'https://www.google.it/'))
+                        bot.send_message_with_buttons(sender_id, 'prova due tipi di bottoni', buttons)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')
