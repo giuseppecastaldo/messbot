@@ -30,7 +30,12 @@ def webhook():
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
                         buttons = []
-                        buttons.append(PostbackButton('risposta1', 'ok'))
+                        buttons.append(PostbackButton('risposta1', 'ok1'))
+                        buttons.append(PostbackButton('risposta2', 'ok2'))
+                        buttons.append(PostbackButton('risposta3', 'ok3'))
+                        buttons.append(PostbackButton('risposta4', 'ok4'))
+                        buttons.append(PostbackButton('risposta5', 'ok5'))
+                        buttons.append(PostbackButton('risposta6', 'ok6'))
                         bot.send_message_with_postback_buttons(sender_id, 'prova bottoni', buttons)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
