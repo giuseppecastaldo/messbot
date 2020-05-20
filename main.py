@@ -2,6 +2,7 @@ import sys
 import requests
 from flask import Flask, request
 from messenger.Messenger import Messenger
+from messenger.types.PostbackButton import PostbackButton
 from messenger.types.QuickReply import QuickReply
 
 app = Flask(__name__)
@@ -28,9 +29,9 @@ def webhook():
                 if messaging_event.get('message'):
                     if ('text') in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
-                        quick_replies = []
-                        quick_replies.append(QuickReply('risposta1', 'ok'))
-                        bot.send_message_with_quick_reply(sender_id, 'prova risposta rapida', quick_replies)
+                        buttons = []
+                        buttons.append(PostbackButton('risposta1', 'ok'))
+                        bot.send_message_with_postback_buttons(sender_id, 'prova bottoni', buttons)
                 #if messaging_event.get('postback'):
                     #if messaging_event['postback']['payload'] == 'ciao':
                         #sendMessage(PAT,sender_id,'Hai premuto il pulsante 1')

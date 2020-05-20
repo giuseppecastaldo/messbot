@@ -1,6 +1,8 @@
 import requests
 import json
 
+BASE_URL = 'https://graph.facebook.com/v7.0/me/messages'
+
 class Messenger:
 
     def __init__(self, access_token):
@@ -19,19 +21,19 @@ class Messenger:
             "access_token": self.access_token
         }
 
-        r = requests.post('https://graph.facebook.com/v7.0/me/messages', json=json_data, params=params)
+        r = requests.post(BASE_URL, json=json_data, params=params)
 
         if r.status_code != requests.codes.ok:
             print(r.text)
 
-    def send_message_with_quick_reply(self, sender_id, text, quick_replies):
+    def send_message_with_quick_replies(self, sender_id, message, quick_replies):
         json_data = {
             "recipient": {
                 "id": sender_id
             },
             "messaging_type": "RESPONSE",
             "message": {
-                "text": text,
+                "text": message,
                 "quick_replies": json.dumps([quick_reply.__dict__ for quick_reply in quick_replies])
             }
         }
@@ -39,7 +41,32 @@ class Messenger:
             "access_token": self.access_token
         }
 
-        r = requests.post('https://graph.facebook.com/v7.0/me/messages', json=json_data, params=params)
+        r = requests.post(BASE_URL, json=json_data, params=params)
+
+        if r.status_code != requests.codes.ok:
+            print(r.text)
+
+    def send_message_with_postback_buttons(self, sender_id, message, buttons):
+        json_data = {
+            "recipient": {
+                "id": sender_id
+            },
+            "message": {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "button",
+                        "text": message,
+                        "buttons": json.dumps([button.__dict__ for button in buttons])
+                    }
+                }
+            }
+        }
+        params = {
+            "access_token": self.access_token
+        }
+
+        r = requests.post(BASE_URL, json=json_data, params=params)
 
         if r.status_code != requests.codes.ok:
             print(r.text)
